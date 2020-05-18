@@ -50,7 +50,30 @@ print("|", field[3], field[4], field[5], "|")
 print("|", field[6], field[7], field[8], "|")
 print("---------")
 
-win = three_in_row(field_list)
+while True:
+    try:
+        x, y = input("Enter the coordinates").split()
+        x = int(x)
+        y = int(y)
+        if x > 3 or y > 3:
+            print("Coordinates should be from 1 to 3!")
+            continue
+        elif field_list[3 - y][x - 1] != "_":
+            print("This cell is occupied! Choose another one!")
+        else:
+            field_list[3 - y][x - 1] = "X"
+            break
+    except TypeError:
+        print("You should enter numbers!")
+        continue
+
+print("---------")
+print("|", field_list[0][0], field_list[0][1], field_list[0][2], "|")
+print("|", field_list[1][0], field_list[1][1], field_list[1][2], "|")
+print("|", field_list[2][0], field_list[2][1], field_list[2][2], "|")
+print("---------")
+
+'''win = three_in_row(field_list)
 
 if len(field) > 9 or field.count("X") - field.count("O") >= 2\
         or field.count("O") - field.count("X") >= 2\
@@ -63,4 +86,4 @@ elif win == "":
 elif "X" in win:
     print("X wins")
 elif "O" in win:
-    print("O wins")
+    print("O wins") '''
